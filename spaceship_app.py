@@ -16,9 +16,17 @@ def spaceship_order_app():
     }
 
     if name:
-        st.subheader(f"Hello {name}, select your resources below:")
-        st.write("Choose quantities for each resource you'd like to bring back to Earth:")
+        st.markdown(f"""
+        ### 👋 Greetings, {name}!
+        Welcome aboard the **Walsal201 Spaceship**, your interstellar gateway to Earth's most valuable resources.
 
+        Below you'll find a curated fleet menu of rare metals and minerals.  
+        You can select **multiple items**, specify quantities, and place your order for delivery back to Earth.
+
+        Let's get your mission started! 🌍🚀
+        """)
+
+        st.subheader("🧾 Resource Selection")
         order_summary = {}
         total_cost = 0
 
@@ -32,10 +40,10 @@ def spaceship_order_app():
             submitted = st.form_submit_button("Submit Order")
 
         if submitted:
-            st.success(f"Thank you {name}! Here's your order summary:")
+            st.success(f"🛒 Thank you {name}! Here's your order summary:")
             for item, qty in order_summary.items():
                 st.write(f"- {qty} units of {item} @ ${fleet_prices[item]:,} each")
-            st.write(f"**Total Cost:** ${total_cost:,}")
+            st.write(f"**💰 Total Cost:** ${total_cost:,}")
             st.balloons()
 
 # Run the app
